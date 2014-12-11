@@ -1,0 +1,8 @@
+[success]: log initialized;
+[info]: OpenGL render context information:
+  Renderer       : GeForce GT 630/PCIe/SSE2
+  Vendor         : NVIDIA Corporation
+  Version        : 4.2.0 NVIDIA 304.125
+  GLSL version   : 4.20 NVIDIA via Cg compiler
+  OpenGL version : 4.2;
+[terminated]: ok.
