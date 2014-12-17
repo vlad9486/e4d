@@ -9,17 +9,30 @@
 
 #include <togl.h>
 
-struct point4_t {
-    float x, y, z, w;
+union point4_t {
+    struct {
+        float x, y, z, w;
+    };
+    float c[4];
 };
-typedef struct point4_t point4_t;
+typedef union point4_t point4_t;
 
-struct tetrahedron4x4_t {
-    point4_t p0, p1, p2, p3;
+union tetrahedron4x4_t {
+    struct {
+        point4_t p0, p1, p2, p3;
+    };
+    point4_t v[4];
 };
-typedef struct tetrahedron4x4_t tetrahedron4x4_t;
+typedef union tetrahedron4x4_t tetrahedron4x4_t;
 
-void draw_tetrahedrons(shader_t* shader, float* matrix, float* point,
-        tetrahedron4x4_t* tetrahedrons, int count);
+const int hypercube_size;
+
+void general_rotate(float* matrix, int m, int n, float angle);
+void general_inverse(float* m, int n);
+
+void create_hypercube(tetrahedron4x4_t* hypercube);
+void prepare_tetrahedrons(shader_t* shader, tetrahedron4x4_t* tetrahedrons,
+        int count);
+void cleanup_tetrahedrons();
 
 #endif /* TETRAHEDRON_H_ */
